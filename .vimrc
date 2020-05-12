@@ -55,8 +55,8 @@ set expandtab
 set smarttab
 
 " 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 " Linebreak on 500 characters
 set lbr
@@ -77,8 +77,8 @@ set expandtab
 set smarttab
 
 " 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 " Linebreak on 500 characters
 set lbr
@@ -159,6 +159,9 @@ autocmd BufEnter * let &titlestring = ' ' . expand("%:p")
 set title
 set titleold=
 
+" set secure encryption method
+set cm=blowfish2
+
 " ////////////////////////////////////////////////
 
 " Plugins
@@ -167,6 +170,8 @@ call plug#begin()
 
 Plug 'ervandew/supertab'
 Plug 'valloric/MatchTagAlways'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 
 call plug#end()
 
@@ -186,3 +191,5 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
+
+
