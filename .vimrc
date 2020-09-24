@@ -1,17 +1,3 @@
-" Old Vim Awesome config. Was giving me headaches so it's gone.
-"set runtimepath+=~/.vim_runtime
-
-" source ~/.vim_runtime/vimrcs/basic.vim
-"source ~/.vim_runtime/vimrcs/filetypes.vim
-"source ~/.vim_runtime/vimrcs/plugins_config.vim
-"source ~/.vim_runtime/vimrcs/extended.vim
-
-" try
-" source ~/.vim_runtime/my_configs.vim
-" catch
-" endtry
-"
-
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -43,29 +29,6 @@ set tm=500
 
 " Add a bit extra margin to the left
 set foldcolumn=1
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use spaces instead of tabs
-set expandtab
-
-" Be smart when using tabs ;)
-set smarttab
-
-" 1 tab == 4 spaces
-set shiftwidth=2
-set tabstop=2
-
-" Linebreak on 500 characters
-set lbr
-set tw=500
-
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -106,6 +69,7 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Show matching brackets when text indicator is over them
 set showmatch 
+
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -128,14 +92,17 @@ set lazyredraw
 set so=7
 
 " :W sudo saves the file 
-" (useful for handling the permission-denied error)
+" (useful when you forgot that you needed sudo to edit a file)
 command W w !sudo tee % > /dev/null
 
 " Set to auto read when a file is changed from the outside
 set autoread
 
+" Shortcut for datetime string - useful for journaling and note-taking
 :nnoremap <F3> "=strftime("%c")<CR>P
 :inoremap <F3> <C-R>=strftime("%c")<CR>
+
+" Relative numbering makes jumping faster
 :set number relativenumber
 
 " Transparency
@@ -162,10 +129,9 @@ set titleold=
 " set secure encryption method
 set cm=blowfish2
 
-" ////////////////////////////////////////////////
-
-" Plugins
-
+""""""""""""""""""""""""""""""
+" => Plugins
+""""""""""""""""""""""""""""""
 call plug#begin()
 
 Plug 'ervandew/supertab'
@@ -192,4 +158,9 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
+" ////////////////////////////////////////////////
 
+" Plugin configs
+
+" Turn off spellcheck in pandoc syntax
+let g:pandoc#spell#enabled = 0
