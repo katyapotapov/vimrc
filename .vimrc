@@ -21,7 +21,10 @@ set title
 set titleold=
 
 " Colorscheme
-colorscheme jellybeans
+" colorscheme jellybeans
+packadd! dracula
+syntax enable
+colorscheme dracula
 
 " Add a bit extra margin to the left
 set foldcolumn=1
@@ -45,9 +48,9 @@ set expandtab
 set shiftwidth=2
 set tabstop=2
 
-" Linebreak on 500 characters
+" Linebreak on 120 characters (changed from 500)
 set lbr
-set tw=500
+set tw=120
 
 " Autoindent - apply indentation of current line to next
 set ai
@@ -119,7 +122,7 @@ set mat=2
 " => Permissions and encryption
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set secure encryption method
-set cm=blowfish2
+" set cm=blowfish2
 
 " :W sudo saves the file 
 " (useful when you forgot that you needed sudo to edit a file)
@@ -156,13 +159,22 @@ set lazyredraw
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
+" use command :PlugInstall to install
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin()
 
 Plug 'ervandew/supertab'
-Plug 'valloric/MatchTagAlways'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'junegunn/fzf'
+
+" support for expanding abbreviations (nice for frontend)
+" for HTML:
+  " you can type elements (div+p>li)
+  " implicit tag names (.wrap)
+  " starter code (html:5)
+  " and then expand with Ctrl+y+,
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 
@@ -188,3 +200,14 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn off spellcheck in pandoc syntax
 let g:pandoc#spell#enabled = 0
+
+" add fzf (fuzzy finder)
+source /usr/share/doc/fzf/examples/fzf.vim
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Useful shortcuts you may have forgotten
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" :Ex - explore filesystem in current buffer
+" :Sex - explore filesystem in split tab
+" :Vex - explore filesystem in vert split tab
